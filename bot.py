@@ -28,6 +28,9 @@ async def about_handler(message):
 async def start_game():
     await bot.send_photo(photo=(""))
 
+async def finish_game(message):
+    await message.answer('Ты преодалел непростой путь \n Молодец', reply_markup=kb_main)
+
 
 
 
@@ -35,11 +38,11 @@ async def start_game():
 dp.register_message_handler(start_handler, commands=['start'])
 dp.register_message_handler(about_handler, lambda mes: mes.text == 'О нас')
 dp.register_message_handler(start_game, lambda mes: mes.text == "начать игру")
+dp.register_message_handler(finish_game, lambda mes: mes.text == "02.23918.VOPG.29@@#11")
 
 
 # Запуск бота
 executor.start_polling(dp, skip_updates=True)
-
 
 
 

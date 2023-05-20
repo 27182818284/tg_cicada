@@ -21,15 +21,17 @@ kb_main = ReplyKeyboardMarkup(keyboard=kb_btns, resize_keyboard=True)
 async def start_handler(message):
     await message.answer('Привет \n Хочешь начать игру? \n чтобы начать напиши "начать игру"', reply_markup=kb_main) 
   
-
 async def about_handler(message):
     await message.answer('Для тебя есть интересный квест \n чтобы начать напиши "начать игру"', reply_markup=kb_main)
 
-async def start_game(message):
-    pass
+#отправка первой головоломки
+async def start_game():
+    await bot.send_photo(photo=(""))
 
 
-# Регистрация хендлеров
+
+
+# Регистрация хендлеровр
 dp.register_message_handler(start_handler, commands=['start'])
 dp.register_message_handler(about_handler, lambda mes: mes.text == 'О нас')
 dp.register_message_handler(start_game, lambda mes: mes.text == "начать игру")
@@ -37,6 +39,8 @@ dp.register_message_handler(start_game, lambda mes: mes.text == "начать и
 
 # Запуск бота
 executor.start_polling(dp, skip_updates=True)
+
+
 
 
 
